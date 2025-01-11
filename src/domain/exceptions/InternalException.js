@@ -1,5 +1,5 @@
 const Exception = require('./Exception')
-const HttpResponse = require('./HttpResponse')
+const HttpResponse = require('../constants/HttpResponse')
 const defaultCode = HttpResponse.code.INTERNAL_SERVER_ERROR
 
 module.exports = class InternalException extends Exception {

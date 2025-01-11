@@ -1,4 +1,4 @@
-module.exports = ({ config }) => ({
+module.exports = () => ({
   error: (message, error) => {
     console.error(`Error -> ${message}`, error ?? '')
   },

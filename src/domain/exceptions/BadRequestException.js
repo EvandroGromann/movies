@@ -1,5 +1,5 @@
 const Exception = require('./Exception')
-const HttpResponse = require('./HttpResponse')
+const HttpResponse = require('../constants/HttpResponse')
 const defaultCode = HttpResponse.code.BAD_REQUEST
 
 module.exports = class BadRequestException extends Exception {
