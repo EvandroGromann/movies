@@ -6,7 +6,7 @@
     "report-dir": "reports/coverage",
     "exclude": [
         "src/Container.js",
-        "src/app/Application.js",
+        "src/application/Application.js",
         "src/interfaces/http/presentations/RouterFactory.js",
         "src/interfaces/http/Router.js",
         "src/interfaces/http/Server.js",

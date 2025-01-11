@@ -4,13 +4,13 @@ module.exports = ({ logger }) => (err, _req, res, _next) => {
   logger.info('Error ->', err)
 
   const defaultError = new InternalException(err)
-  let statusCode = defaultError.status_code
+  let errorCode = defaultError.error_code
   let response = { ...defaultError, message: defaultError.message }
 
-  if (err.status_code) {
-    statusCode = err.status_code
+  if (err.error_code) {
+    errorCode = err.error_code
     response = { ...err, message: err.message }
   }
 
-  res.status(statusCode).json(response)
+  return res.status(errorCode).json(response)
 }

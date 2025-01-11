@@ -1,5 +1,5 @@
 const Exception = require('./Exception')
-const HttpResponse = require('./HttpResponse')
+const HttpResponse = require('../constants/HttpResponse')
 const defaultCode = HttpResponse.code.SERVICE_UNAVAILABLE
 
 module.exports = class IntegrationException extends Exception {
