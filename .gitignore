@@ -1,0 +1,15 @@
+# Node
+node_modules
+package-lock.json
+
+# Unit test / coverage reports
+coverage/
+test-results/
+test-results
+target/
+.nyc_output
+*xunit*
+
+# OS auto-generated files
+.DS_Store
+._*

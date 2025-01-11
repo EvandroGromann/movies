@@ -1,0 +1,26 @@
+{
+    "all": true,
+    "include": [
+        "src/**/*.js"
+    ],
+    "report-dir": "reports/coverage",
+    "exclude": [
+        "src/Container.js",
+        "src/app/Application.js",
+        "src/interfaces/http/presentations/RouterFactory.js",
+        "src/interfaces/http/Router.js",
+        "src/interfaces/http/Server.js",
+        "reports/coverage"
+    ],
+    "reporter": [
+        "cobertura",
+        "html",
+        "lcov",
+        "text-summary"
+    ],
+    "check-coverage": true,
+    "branches": 85,
+    "lines": 85,
+    "functions": 85,
+    "statements": 85
+}

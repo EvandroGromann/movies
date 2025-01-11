@@ -1,0 +1,12 @@
+{
+    "ext": "js json",
+    "watch": [
+        "src",
+        "libs"
+    ],
+    "env": {
+        "MONGO_ENDPOINT": "mongodb://admin:4M0515T3M45@127.0.0.1:27017/onboarding?authSource=admin",
+        "NODE_ENV": "dev",
+        "PORT": "3000"
+    }
+}

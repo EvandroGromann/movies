@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "pre-push audit"
+npm audit
+
+echo "unit tests"
+npm run test:all
+
+echo "coverage"
+npm run coverage:details

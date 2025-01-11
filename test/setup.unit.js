@@ -1,0 +1,10 @@
+const chai = require('chai')
+const dirtyChai = require('dirty-chai')
+const chaiChange = require('chai-change')
+const spies = require('chai-spies')
+const chaiAsPromised = require('chai-as-promised')
+
+chai.use(spies)
+chai.use(dirtyChai)
+chai.use(chaiChange)
+chai.use(chaiAsPromised)
