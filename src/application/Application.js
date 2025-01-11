@@ -8,18 +8,22 @@ module.exports = class Application {
   }
 
   async load () {
+    const mongo = await MongoMemoryServer.create()
+    const uri = mongo.getUri()
+
     const config = await configLoader.loadEnvironment()
+    config.mongodb.uri = uri
+
     this.container = container.configureContainer(config)
     return this
   }
 
   async start () {
-    const { server, providerConnection } = this.container.cradle
+    const { server, providerConnection, movieMigration } = this.container.cradle
 
-    const mongo = await MongoMemoryServer.create()
-    const uri = mongo.getUri()
+    await providerConnection.connect()
 
-    await providerConnection.connect(uri)
+    await movieMigration.execute()
 
     await server.start()
   }
