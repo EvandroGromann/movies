@@ -23,6 +23,7 @@
     "compression": "^1.7.5",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
+    "csv-parser": "^3.1.0",
     "express": "^4.21.2",
     "helmet": "^8.0.0",
     "joi": "^17.13.3",

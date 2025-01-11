@@ -16,18 +16,19 @@ const configureContainer = (config) => {
     providerConnection: asClass(ProviderConnection).singleton(),
     container: asValue(container)
   }).loadModules([
-    'src/infra/database/**/*.js',
     'src/interfaces/http/middlewares/**/*.js',
     'src/interfaces/http/presentations/**/*.js',
-    'src/app/operations/**/*.js',
-    'src/app/services/**/*.js',
+    'src/application/operations/**/*.js',
+    'src/application/services/**/*.js',
+    'src/infra/migrations/*.js',
     [
       'src/infra/database/mongo/models/**/*.js',
       {
         lifetime: Lifetime.SINGLETON
       }
     ],
-    'src/infra/database/mongo/repositories/**/*.js'
+    'src/infra/database/mongo/repositories/**/*.js',
+    'src/infra/logging/**/*.js'
   ], {
     formatName: 'camelCase',
     resolverOptions: {

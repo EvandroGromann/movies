@@ -2,17 +2,22 @@ const mongoose = require('mongoose')
 
 module.exports = class ProviderConnection {
   constructor ({ config }) {
+    this.config = config
     this.mongoose = mongoose
+    this.url = this._getUrl()
+    const options = this._getOptions()
+    this.connection = this.mongoose.createConnection(this.url, options)
   }
 
-  async connect (url) {
+  async connect () {
     if (this.connection && this._isConnected()) {
       return this.connection
     }
 
     try {
       const options = this._getOptions()
-      this.url = url
+      this.url = this._getUrl()
+
       this.mongoose.pluralize(null)
 
       this.connection = this.mongoose.createConnection(this.url, options)
@@ -28,6 +33,10 @@ module.exports = class ProviderConnection {
 
   _isConnected () {
     return this.connection?.readyState === 1
+  }
+
+  _getUrl () {
+    return this.config.mongodb.uri
   }
 
   close (force = false) {
