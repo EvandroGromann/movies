@@ -26,8 +26,8 @@ API RESTful para retorno de informações referente a filmes e suas premiações
 ## Endpoints
 
 - `GET /health`: Endpoint de health check para verificar a saúde da aplicação.
-- `GET /api/movies/:movie_id`: Rerotna o filme bucando pelo id.
-- `GET /api/movies`: Rerotna uma lista paginada de filmes.
+- `GET /api/movies/:movie_id`: Retorna o filme bucando pelo id.
+- `GET /api/movies`: Retorna uma lista paginada de filmes.
 - `POST /api/movies`: Cria um novo filme.
 - `PUT /api/movies/:movie_id`: Atualiza os dados de um filme.
 - `GET /api/awards/interval`: Retorna o produtor com maior intervalo entre dois prêmios consecutivos e o que obteve dois prêmios mais rápido.
