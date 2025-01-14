@@ -9,16 +9,26 @@ module.exports = class Repository {
     return await this.Model.countDocuments(query)
   }
 
-  async findPaginated ({ page = 1, limit = 100, query = {}, sort = {} }) {
+  async findPaginated (filter = {}, pagination) {
     const options = {
-      page: Number(page),
-      limit: Number(limit),
-      sort
+      page: Number(pagination.page),
+      limit: Number(pagination.limit),
+      sort: {}
     }
 
-    const result = await this.Model.paginate(query, options)
+    if (pagination.sort && pagination.sort_type) {
+      options.sort[pagination.sort] = pagination.sort_type
+    }
 
-    return result
+    const result = await this.Model.paginate(filter, options)
+
+    return {
+      docs: result.docs.map(doc => this.mapper.toEntity(doc)),
+      total: result.totalDocs,
+      limit: result.limit,
+      page: result.page,
+      pages: result.totalPages
+    }
   }
 
   async get (query) {

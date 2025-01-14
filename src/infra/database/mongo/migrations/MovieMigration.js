@@ -8,14 +8,14 @@ module.exports = class {
   }
 
   async execute () {
-    fs.createReadStream('src/infra/migrations/files/movies.csv')
+    fs.createReadStream('src/infra/database/mongo/migrations/files/movies.csv')
       .pipe(csv({ separator: ';' }))
       .on('data', async (row) => {
         await this.movieRepository.create({
           year: parseInt(row.year),
           title: row.title,
-          studios: row.studios.split(/,| and /).map(studio => studio.trim()),
-          producers: row.producers.split(/,| and /).map(producer => producer.trim()),
+          studios: row.studios.split(/,| and /).map(studio => studio.trim()).filter(studio => studio),
+          producers: row.producers.split(/,| and /).map(producer => producer.trim()).filter(producer => producer),
           winner: row.winner === 'yes'
         })
       })

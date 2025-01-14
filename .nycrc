@@ -7,7 +7,7 @@
     "exclude": [
         "src/Container.js",
         "src/application/Application.js",
-        "src/infra/migrations",
+        "src/infra/database/mongo/migrations",
         "src/interfaces/http/presentations/RouterFactory.js",
         "src/interfaces/http/Router.js",
         "src/interfaces/http/Server.js",

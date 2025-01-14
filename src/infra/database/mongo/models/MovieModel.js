@@ -1,5 +1,5 @@
 const { Model, Schema } = require('libs/mongodb')
-const Paginate = require('mongoose-paginate')
+const Paginate = require('mongoose-paginate-v2')
 
 module.exports = class MovieModel extends Model {
   constructor ({ providerConnection }) {
