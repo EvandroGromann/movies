@@ -4,7 +4,7 @@ const request = require('test/helpers/request')
 
 describe('API :: GET /api/awards/intervals', () => {
   context('200 - Ok', async () => {
-    it.only('Get awards intervals - success', async () => {
+    it('Get awards intervals - success', async () => {
       const { body } = await request()
         .get('/api/awards/interval')
         .expect(200)
