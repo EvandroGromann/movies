@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "f0274426-f61b-4bc9-82dc-6860e81e4184",
+		"name": "movies-ms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7073733",
+		"_collection_link": "https://planetary-shuttle-508787.postman.co/workspace/Teste~f4b754ee-9177-44fa-8e0b-13a8c79d2ebc/collection/7073733-f0274426-f61b-4bc9-82dc-6860e81e4184?action=share&source=collection_link&creator=7073733"
+	},
+	"item": [
+		{
+			"name": "movies",
+			"item": [
+				{
+					"name": "Create Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json()",
+									"",
+									"pm.collectionVariables.set('MOVIE_ID', response.id)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"{{$randomLoremSentence}}\",\n  \"year\": 2009,\n  \"studios\": [\n    \"Cooper Tire & Rubber Co.\"\n  ],\n  \"producers\": [\n    \"Roy Mitchell\",\n    \"Anne Nash\"\n  ],\n  \"winner\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MOVIES_ENDPOINT}}/movies",
+							"host": [
+								"{{MOVIES_ENDPOINT}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Movie",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"New Title\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MOVIES_ENDPOINT}}/movies/{{MOVIE_ID}}",
+							"host": [
+								"{{MOVIES_ENDPOINT}}"
+							],
+							"path": [
+								"movies",
+								"{{MOVIE_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MOVIES_ENDPOINT}}/movies/{{MOVIE_ID}}",
+							"host": [
+								"{{MOVIES_ENDPOINT}}"
+							],
+							"path": [
+								"movies",
+								"{{MOVIE_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MOVIES_ENDPOINT}}/movies?sort=title&sort_type=desc&page=1&limit=10",
+							"host": [
+								"{{MOVIES_ENDPOINT}}"
+							],
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "title"
+								},
+								{
+									"key": "sort_type",
+									"value": "desc"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Movie",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{MOVIES_ENDPOINT}}/movies/{{MOVIE_ID}}",
+							"host": [
+								"{{MOVIES_ENDPOINT}}"
+							],
+							"path": [
+								"movies",
+								"{{MOVIE_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Award Intervals",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MOVIES_ENDPOINT}}/awards/interval",
+							"host": [
+								"{{MOVIES_ENDPOINT}}"
+							],
+							"path": [
+								"awards",
+								"interval"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "MOVIE_ID",
+			"value": ""
+		}
+	]
+}

@@ -20,7 +20,7 @@ const configureContainer = (config) => {
     'src/interfaces/http/presentations/**/*.js',
     'src/application/operations/**/*.js',
     'src/application/services/**/*.js',
-    'src/infra/migrations/*.js',
+    'src/infra/database/mongo/migrations/*.js',
     [
       'src/infra/database/mongo/models/**/*.js',
       {

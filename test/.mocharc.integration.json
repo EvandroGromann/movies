@@ -1,7 +1,7 @@
 {
     "extension": ["js"],
-    "file": "test/setup.features.js",
-    "spec": "test/features/**/*.spec.js",
+    "file": "test/setup.integration.js",
+    "spec": "test/integration/**/*.spec.js",
     "timeout": 10000,
     "color": true,
     "ui": "bdd",

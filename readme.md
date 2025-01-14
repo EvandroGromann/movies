@@ -1,7 +1,7 @@
 # API
 
 ## Descrição
-API RESTful
+API RESTful para retorno de informações referente a filmes e suas premiações.
 
 ## Requisitos
 - Node.js (versão 20 ou superior)
@@ -21,11 +21,16 @@ API RESTful
     npm run dev
     ```
 
-2. A aplicação estará disponível em `http://localhost:3000/api`.
+2. A aplicação estará disponível em `http://localhost:3000`.
 
 ## Endpoints
 
 - `GET /health`: Endpoint de health check para verificar a saúde da aplicação.
+- `GET /api/movies/:movie_id`: Rerotna o filme bucando pelo id.
+- `GET /api/movies`: Rerotna uma lista paginada de filmes.
+- `POST /api/movies`: Cria um novo filme.
+- `PUT /api/movies/:movie_id`: Atualiza os dados de um filme.
+- `GET /api/awards/interval`: Retorna o produtor com maior intervalo entre dois prêmios consecutivos e o que obteve dois prêmios mais rápido.
 
 ## Executando os Testes
 
@@ -39,12 +44,12 @@ API RESTful
     npm run test:unit
     ```
 
-3. Execute os testes de features:
-    ```bash
-    npm run test:features
-    ```
-
-4. Execute os testes de integração:
+3. Execute os testes de integração:
     ```bash
     npm run test:integration
+    ```
+
+4. Executar a cobertura de testes (coverage):
+    ```bash
+    npm run coverage:details
     ```
