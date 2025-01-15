@@ -30,28 +30,22 @@ module.exports = class {
       if (years.length > 1) {
         years.sort((a, b) => a - b)
         const intervals = years.slice(1).map((year, index) => year - years[index])
-        const maxInterval = Math.max(...intervals)
-        const minInterval = Math.min(...intervals)
-        producersIntervals.push({ producer, maxInterval, minInterval, intervals, years })
+        intervals.forEach((interval, index) => {
+          producersIntervals.push({
+            producer,
+            interval,
+            previousWin: years[index],
+            followingWin: years[index + 1]
+          })
+        })
       }
     })
 
-    const maxInterval = Math.max(...producersIntervals.map(p => p.maxInterval))
-    const minInterval = Math.min(...producersIntervals.map(p => p.minInterval))
+    const maxInterval = Math.max(...producersIntervals.map(p => p.interval))
+    const minInterval = Math.min(...producersIntervals.map(p => p.interval))
 
-    const maxProducers = producersIntervals.filter(p => p.maxInterval === maxInterval).map(p => ({
-      producer: p.producer,
-      interval: p.maxInterval,
-      previousWin: p.years[p.intervals.indexOf(p.maxInterval)],
-      followingWin: p.years[p.intervals.indexOf(p.maxInterval) + 1]
-    }))
-
-    const minProducers = producersIntervals.filter(p => p.minInterval === minInterval).map(p => ({
-      producer: p.producer,
-      interval: p.minInterval,
-      previousWin: p.years[p.intervals.indexOf(p.minInterval)],
-      followingWin: p.years[p.intervals.indexOf(p.minInterval) + 1]
-    }))
+    const maxProducers = producersIntervals.filter(p => p.interval === maxInterval)
+    const minProducers = producersIntervals.filter(p => p.interval === minInterval)
 
     return {
       min: minProducers,
